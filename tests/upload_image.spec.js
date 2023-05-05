@@ -51,7 +51,6 @@ test("Create a pet and Upload image for the pet", async({request, baseURL}) => {
     })
 
     // assert that the api is working as expected
-    expect(uploadImg.ok()).toBeTruthy();
     expect(uploadImg.status()).toBe(200);
 
     // assert that the correct metadata is getting returned
