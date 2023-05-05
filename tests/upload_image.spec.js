@@ -52,10 +52,11 @@ test("Create a pet and Upload image for the pet", async({request, baseURL}) => {
         }
     })
 
-    // assert that the api is working as expected
-    //expect(uploadImg.status()).toBe(200);
-
     console.log(uploadImg.text());
+    // assert that the api is working as expected
+    expect(uploadImg.status()).toBe(200);
+
+    
     // assert that the correct metadata is getting returned
-    //expect((await uploadImg.json()).message).toContain(metaData);
+    expect((await uploadImg.json()).message).toContain(metaData);
 });
