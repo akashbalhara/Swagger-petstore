@@ -43,7 +43,7 @@ test("Create a pet and Upload image for the pet", async({request, baseURL}) => {
         multipart: {
           file : {
             name : file,
-            mimeType : "image/jpeg",
+            mimeType : "application/octet-stream",
             buffer : image,
           },
           additionalMetadata : metaData
