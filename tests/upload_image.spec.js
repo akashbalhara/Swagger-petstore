@@ -42,6 +42,10 @@ test("Create a pet and Upload image for the pet", async({request, baseURL}) => {
 
     // uploading image 
     const uploadImg = await request.post(`${baseURL}pet/`+petId+'/uploadImage' , {
+      headers: {
+        Accept: "*/*",
+        ContentType: "multipart/form-data",
+      },
         multipart: {
           file : {
             name : file,
@@ -50,9 +54,9 @@ test("Create a pet and Upload image for the pet", async({request, baseURL}) => {
           },
           additionalMetadata : metaData
         }
-    })
+    });
 
-    console.log(uploadImg.text());
+    console.log(await uploadImg.text());
     // assert that the api is working as expected
     expect(uploadImg.status()).toBe(200);
 
