@@ -52,7 +52,7 @@ test("Create a pet and Upload image for the pet", async({request, baseURL}) => {
         }
     })
 
-    console.log(uploadImg.text());
+    console.log(await uploadImg.text());
     // assert that the api is working as expected
     expect(uploadImg.status()).toBe(200);
 
