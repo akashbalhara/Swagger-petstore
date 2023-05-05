@@ -25,6 +25,7 @@ test("Create a pet and Upload image for the pet", async({request, baseURL}) => {
           }
     });
 
+    
     // assert that the api is working as expected
     expect(response.ok()).toBeTruthy();
     expect(response.status()).toBe(200);
@@ -54,6 +55,7 @@ test("Create a pet and Upload image for the pet", async({request, baseURL}) => {
         }
     })
 
+    console.log(await uploadImg.text())
     // assert that the api is working as expected
     expect(response.ok()).toBeTruthy();
     expect(uploadImg.status()).toBe(200);
