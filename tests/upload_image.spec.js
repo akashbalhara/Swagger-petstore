@@ -32,19 +32,17 @@ test("Create a pet and Upload image for the pet", async({request, baseURL}) => {
     // saving the pet id of the newly created pet
     const petInfo = await response.json();
     const petId = petInfo.id
-    console.log(petId)
 
     // setting file path and buffer
     const file = path.resolve("tests/fixtures/", "playwright_dog_pic.jpg");
     const image = fs.readFileSync(file);
     const metaData = "Dog Image";
-    console.log(petId)
 
     // uploading image 
     const uploadImg = await request.post(`${baseURL}pet/`+petId+'/uploadImage' , {
       headers: {
         Accept: "*/*",
-        ContentType: "multipart/form-data",
+        ContentType: "application/json",
       },
         multipart: {
           file : {
@@ -54,13 +52,12 @@ test("Create a pet and Upload image for the pet", async({request, baseURL}) => {
           },
           additionalMetadata : metaData
         }
-    });
+    })
 
-    console.log(await uploadImg.text());
     // assert that the api is working as expected
+    expect(response.ok()).toBeTruthy();
     expect(uploadImg.status()).toBe(200);
 
-    
     // assert that the correct metadata is getting returned
     expect((await uploadImg.json()).message).toContain(metaData);
 });
