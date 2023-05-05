@@ -40,10 +40,6 @@ test("Create a pet and Upload image for the pet", async({request, baseURL}) => {
 
     // uploading image 
     const uploadImg = await request.post(`${baseURL}pet/`+petId+'/uploadImage' , {
-      headers: {
-        Accept: "*/*",
-        ContentType: "application/json",
-      },
         multipart: {
           file : {
             name : file,
